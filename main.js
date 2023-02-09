@@ -5,6 +5,9 @@ import path, { join } from 'path'
 import { fileURLToPath, pathToFileURL } from 'url'
 import { platform } from 'process'
 import * as ws from 'ws';
+ patch-3
+import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, watch } from 'fs';
+=======
  patch-2
 import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, watch } from 'fs';
 =======
@@ -15,6 +18,7 @@ import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, rmSync, wa
 /*import watch from 'glob-fs'*/
  main
  main
+ main
 import yargs from 'yargs';
 import { spawn } from 'child_process';
 import lodash from 'lodash';
@@ -22,12 +26,15 @@ import chalk from 'chalk';
 import syntaxerror from 'syntax-error';
 import { tmpdir } from 'os';
 import { format } from 'util';
+ patch-3
+=======
  patch-2
 =======
  patch-1
 =======
 import P from 'pino';
 //import pino from 'pino';
+ main
  main
  main
 import { makeWASocket, protoType, serialize } from './lib/simple.js';
@@ -90,6 +97,9 @@ const { state, saveState } = useSingleFileAuthState(global.authFile)
 const connectionOptions = {
 printQRInTerminal: true,
 auth: state,
+patch-3
+browser: ['TheLoliBot-MD','Edge','1.0.0'],
+=======
  patch-2
 browser: ['TheLoliBot-MD','Edge','1.0.0'],
 =======
@@ -98,6 +108,7 @@ browser: ['TheLoliBot-MD','Edge','1.0.0'],
 =======
 logger: P({ level: 'silent'}),
 browser: ['TheLoliBot-MD','Edge','1.0.0']
+ main
  main
  main
 }
@@ -109,9 +120,12 @@ if (!opts['test']) {
 if (global.db) setInterval(async () => {
 if (global.db.data) await global.db.write()
 if (opts['autocleartmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 'tmp'], tmp.forEach(filename => cp.spawn('find', [filename, '-amin', '3', '-type', 'f', '-delete'])))
+ patch-3
+=======
  patch-2
 =======
  patch-1
+ main
  main
 }, 30 * 1000)}
 =======
@@ -146,6 +160,8 @@ if (connection == 'open') {
  patch-1
 console.log(chalk.yellow('▣─────────────────────────────···\n│\n│❧ 𝙲𝙾𝙽𝙴𝙲𝚃𝙰𝙳𝙾 𝙲𝙾𝚁𝚁𝙴𝙲𝚃𝙰𝙼𝙴𝙽𝚃𝙴 𝙰𝙻 𝚆𝙷𝙰𝚃𝚂𝙰𝙿𝙿 ✅\n│\n▣─────────────────────────────···'))
 await conn.groupAcceptInvite('EZTncXrSvPfETMSdmvEpo1')}}
+ patch-3
+=======
  patch-2
 =======
 =======
@@ -153,6 +169,7 @@ console.log(chalk.yellow(lenguajeGB['smsConexion']()))
 await conn.groupAcceptInvite(global.nna2)}
 if (connection == 'close') {
 console.log(chalk.yellow(lenguajeGB['smsConexionOFF']()))}}
+ main
  main
  main
 
@@ -184,9 +201,12 @@ conn.ev.off('connection.update', conn.connectionUpdate)
 conn.ev.off('creds.update', conn.credsUpdate)
 }
   
+ patch-3
+=======
  patch-2
 =======
  patch-1
+ main
  main
 conn.welcome = '┏━━━━━━━━━━━━\n┃──〘 𝑩𝒊𝒆𝒏𝒗𝒆𝒏𝒊𝒅𝒐/𝒂 〙──\n┃━━━━━━━━━━━━\n┃ *_✨ @user* \n┃ *_ 𝘼𝙡 @subject ✨_*\n┃\n┃=> *_𝑬𝒏 𝒆𝒔𝒕𝒆 𝒈𝒓𝒖𝒑𝒐 𝒑𝒐𝒅𝒓𝒂𝒔_*\n┃ *_𝒆𝒏𝒄𝒐𝒏𝒕𝒓𝒂𝒓:_*\n┠⊷ *𝑨𝒎𝒊𝒔𝒕𝒂𝒅𝒆𝒔 🫂* \n┠⊷ *𝑫𝒆𝒔𝒎𝒂𝒅𝒓𝒆 💃🕺* \n┠⊷ *𝑹𝒆𝒍𝒂𝒋𝒐 💅* \n┠⊷ *𝑬𝒏𝒆𝒎𝒊𝒈@𝒔🥵* :\n┠⊷ *𝑼𝒏 𝑩𝒐𝒕 𝑺𝒆𝒙𝒚*\n┃\n┃=> *_𝑷𝒖𝒆𝒅𝒆𝒔 𝒔𝒐𝒍𝒊𝒄𝒊𝒕𝒂𝒓 𝒎𝒊 𝒍𝒊𝒔𝒕𝒂 𝒅𝒆_*\n┃ *_𝒄𝒐𝒎𝒂𝒏𝒅𝒐𝒔 𝒄𝒐𝒏:_*\n┠⊷ *#menu*\n┃\n┃=> *_𝑨𝒒𝒖𝒊 𝒕𝒊𝒆𝒏𝒆𝒔 𝒍𝒂 𝒅𝒆𝒔𝒄𝒓𝒊𝒑𝒄𝒊𝒐𝒏_* \n┃ *_𝒅𝒆𝒍 𝒈𝒓𝒖𝒑𝒐, 𝒍𝒆𝒆𝒍𝒂!!_*\n┃\n\n@desc\n\n┃ \n┃ *_🔰  𝑫𝒊𝒔𝒇𝒓𝒖𝒕𝒂 𝒅𝒆 𝒕𝒖_* \n┃ *_𝒆𝒔𝒕𝒂𝒅𝒊𝒂 𝒆𝒏 𝒆𝒍 𝒈𝒓𝒖𝒑𝒐  🔰_*  \n┃\n┗━━━━━━━━━━━'
   conn.bye = '┏━━━━━━━━━━━━\n┃──〘 𝑨𝒅𝒊𝒐𝒔 〙───\n┃━━━━━━━━━━━━\n┃ *_☠ 𝑺𝒆 𝒇𝒖𝒆 @user_* \n┃ *_𝑳𝒆 𝒕𝒊𝒆𝒏𝒆 𝒎𝒊𝒆𝒅𝒐 𝒂𝒍 𝒆𝒙𝒊𝒕𝒐🤑_*\n┗━━━━━━━━━━'
@@ -196,6 +216,8 @@ conn.welcome = '┏━━━━━━━━━━━━\n┃──〘 𝑩𝒊�
   conn.sSubject = '*𝑺𝒆 𝒉𝒂 𝒎𝒐𝒅𝒊𝒇𝒊𝒄𝒂𝒅𝒐 𝒆𝒍 𝒏𝒐𝒎𝒃𝒓𝒆 𝒅𝒆𝒍 𝒈𝒓𝒖𝒑𝒐*\n*𝑵𝒖𝒆𝒗𝒐 𝒏𝒐𝒎𝒃𝒓𝒆:* @subject'
   conn.sIcon = '*𝑺𝒆 𝒉𝒂 𝒄𝒂𝒎𝒃𝒊𝒂𝒅𝒐 𝒍𝒂 𝒇𝒐𝒕𝒐 𝒅𝒆𝒍 𝒈𝒓𝒖𝒑𝒐!!*'
   conn.sRevoke = '*𝑺𝒆 𝒉𝒂 𝒂𝒄𝒕𝒖𝒂𝒍𝒊𝒛𝒂𝒅𝒐 𝒆𝒍 𝒍𝒊𝒏𝒌 𝒅𝒆𝒍 𝒈𝒓𝒖𝒑𝒐!!*\n*𝑳𝒊𝒏𝒌 𝒏𝒖𝒆𝒗𝒐:* @revoke'
+ patch-3
+=======
  patch-2
 =======
 =======
@@ -208,6 +230,7 @@ conn.sDesc = lenguajeGB['smsSdesc']() //'*𝑺𝒆 𝒉𝒂 𝒎𝒐𝒅𝒊𝒇
 conn.sSubject = lenguajeGB['smsSsubject']() //'*𝑺𝒆 𝒉𝒂 𝒎𝒐𝒅𝒊𝒇𝒊𝒄𝒂𝒅𝒐 𝒆𝒍 𝒏𝒐𝒎𝒃𝒓𝒆 𝒅𝒆𝒍 𝒈𝒓𝒖𝒑𝒐*\n*𝑵𝒖𝒆𝒗𝒐 𝒏𝒐𝒎𝒃𝒓𝒆:*\n@subject'
 conn.sIcon = lenguajeGB['smsSicon']() //'*𝑺𝒆 𝒉𝒂 𝒄𝒂𝒎𝒃𝒊𝒂𝒅𝒐 𝒍𝒂 𝒇𝒐𝒕𝒐 𝒅𝒆𝒍 𝒈𝒓𝒖𝒑𝒐!!'
 conn.sRevoke = lenguajeGB['smsSrevoke']() //'*𝑺𝒆 𝒉𝒂 𝒂𝒄𝒕𝒖𝒂𝒍𝒊𝒛𝒂𝒅𝒐 𝒆𝒍 𝒍𝒊𝒏𝒌 𝒅𝒆𝒍 𝒈𝒓𝒖𝒑𝒐!!*\n*𝑳𝒊𝒏𝒌 𝒏𝒖𝒆𝒗𝒐!!*\n\n*@revoke*'
+ main
  main
  main
 
@@ -300,6 +323,8 @@ console.log(chalk.cyanBright(`\n▣────────[ 𝙰𝚄𝚃𝙾�
 }, 180000)
 _quickTest()
 .then()
+ patch-3
+=======
  patch-2
 =======
 =======
@@ -308,6 +333,7 @@ console.log(chalk.cyanBright(lenguajeGB['smsClearTmp']()))
 }, 300000) //15 min
 _quickTest()
 .then(() => conn.logger.info(lenguajeGB['smsCargando']()))
+ main
  main
  main
 .catch(console.error)
