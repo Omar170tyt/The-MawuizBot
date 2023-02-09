@@ -2,12 +2,11 @@ import { xpRange } from '../lib/levelling.js'
 import PhoneNumber from 'awesome-phonenumber'
 import { promises } from 'fs'
 import { join } from 'path'
-let handler = async (m, { conn, usedPrefix, command, args, usedPrefix: _p, __dirname, isOwner, text, isAdmin, isROwner }) => {
-  
-  
-const { levelling } = '../lib/levelling.js'
-//let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text }) => {
+import fetch from 'node-fetch'
 
+let handler = async (m, { conn, usedPrefix, command, args, usedPrefix: _p, __dirname, isOwner, text, isAdmin, isROwner }) => {
+try{
+const { levelling } = '../lib/levelling.js'
 let { exp, limit, level, role } = global.db.data.users[m.sender]
 let { min, xp, max } = xpRange(level, global.multiplier)
 
@@ -58,68 +57,69 @@ level, limit, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
 readmore: readMore
 }
 text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-let vn = './media/juegos.mp3'
   
-  
-//let name = await conn.getName(m.sender)
-let pp = './media/menus/Menuvid1.mp4'
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let mentionedJid = [who]
 let username = conn.getName(who)
-//let user = global.db.data.users[m.sender]
+let user = global.db.data.users[m.sender]
 //user.registered = false
 
-let menu = `
-╭━━〔 *${wm}* 〕━━⬣
-┃💗 *¡𝙃𝙤𝙡𝙖!* ${username}
-┃┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-┃🎠🎠🎠🎠🎠🎠🎠🎠🎠
-┃❏ *𝙀𝙭𝙥𝙚𝙧𝙞𝙚𝙣𝙘𝙞𝙖 ➺ ${exp}*
-┃❏ *𝙉𝙞𝙫𝙚𝙡 ➺ ${level}*
-┃❏ *𝙍𝙤𝙡 ➺* ${role}
-┃❏ *𝙇𝙤𝙡𝙞𝙘𝙤𝙞𝙣𝙨 ➺ $ ${money}*
-┃❏ *𝙐𝙨𝙪𝙖𝙧𝙞𝙤 ➺ ${Object.keys(global.db.data.users).length}* 
-┃🎠🎠🎠🎠🎠🎠🎠🎠🎠
-┃┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-┃〔 𝙅𝙪𝙚𝙜𝙤𝙨 𝙙𝙞𝙣𝙖́𝙢𝙞𝙘𝙤𝙨 〕
-┃┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-┃🎡➺ _${usedPrefix}mates | matemáticas | math_
-┃🎡➺ _${usedPrefix}ppt *piedra : papel : tijera*_
-┃🎡➺ _${usedPrefix}topgays_
-┃🎡➺ _${usedPrefix}topotakus_
-┃🎡➺ _${usedPrefix}gay | gay *@tag*_
-┃🎡➺ _${usedPrefix}gay2 *nombre : @tag*_
-┃🎡➺ _${usedPrefix}lesbiana *nombre : @tag*_
-┃🎡➺ _${usedPrefix}manca *nombre : @tag*_
-┃🎡➺ _${usedPrefix}manco *nombre : @tag*_
-┃🎡➺ _${usedPrefix}pajero *nombre : @tag*_
-┃🎡➺ _${usedPrefix}pajera *nombre : @tag*_
-┃🎡➺ _${usedPrefix}puto *nombre : @tag*_
-┃🎡➺ _${usedPrefix}puta *nombre : @tag*_
-┃🎡➺ _${usedPrefix}rata *nombre : @tag*_
-┃🎡➺ _${usedPrefix}love *nombre : @tag*_
-┃🎡➺ _${usedPrefix}doxear *nombre : @tag*_
-┃🎡➺ _${usedPrefix}doxxeame_
-┃🎡➺ _${usedPrefix}pregunta *texto*_
-┃🎡➺ _${usedPrefix}slot *apuesta*_
-┃🎡➺ _${usedPrefix}formarpareja_
-┃🎡➺ _${usedPrefix}dado_
-┃🎡➺ _${usedPrefix}verdad_
-┃🎡➺ _${usedPrefix}reto_
-┃🎡➺ _${usedPrefix}simi | okgoogle *texto*_
-┃🎡➺ _${usedPrefix}alexa | siri | cortana *texto*_
-┃🎡➺ _${usedPrefix}simsimi | bixby *texto*_
-┃🎡➺ _${usedPrefix}multijuegos_
-┃🎡➺ _${usedPrefix}juegos_
-╰━━━━━━━━━━━━━━━━━━━⬣`.trim()
-conn.sendHydrated(m.chat, menu, wm, pp, 'https://github.com/elrebelde21/The-LoliBot-MD', '𝑻𝒉𝒆 𝑳𝒐𝒍𝒊𝑩𝒐𝒕-𝑴𝑫', null, null, [
-['𝙈𝙚𝙣𝙪́ 𝙘𝙤𝙢𝙥𝙡𝙚𝙩𝙤 💫', '.allmenu'],
-['𝙈𝙚𝙣𝙪 𝙙𝙚𝙨𝙥𝙡𝙚𝙜𝙖𝙗𝙡𝙚 🌟', '/menulista'],
-['𝙈𝙚𝙣𝙪 𝙋𝙧𝙞𝙣𝙘𝙞𝙥𝙖𝙡 ⚡', '#menu']
-], m,)
-conn.sendFile(m.chat, vn, 'juegos.mp3', null, m, true, { type: 'audioMessage', ptt: true, sendEphemeral: true })
+let pp = gataVidMenu.getRandom()
+let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
+let fsizedoc = '1'.repeat(10)
+let adReply = { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: { forwardingScore: fsizedoc, externalAdReply: { showAdAttribution: true, title: wm, body: '👋 ' + username, mediaUrl: ig, description: 'Hola', previewType: 'PHOTO', thumbnail: await(await fetch(gataMenu.getRandom())).buffer(), sourceUrl: redesMenu.getRandom() }}}
 
-}
+let menuA = `🎠 ${lenguajeGB['smsConfi2']()} *${username}*`.trim()
+let menuB = `
+┌───⊷ *${wm}*
+┆🎠🎠🎠🎠🎠🎠🎠🎠🎠
+┆❏ *𝙁𝙚𝙘𝙝𝙖 ➺ ${week}, ${date}*
+┆❏ *𝙀𝙭𝙥𝙚𝙧𝙞𝙚𝙣𝙘𝙞𝙖 ➺ ${exp}*
+┆❏ *𝙉𝙞𝙫𝙚𝙡 ➺ ${level}*
+┆❏ *𝙍𝙤𝙡 ➺* ${role}
+┆❏ *𝙇𝙤𝙡𝙞𝙘𝙤𝙞𝙣𝙨 ➺ $ ${money}*
+┆❏ *𝙐𝙨𝙪𝙖𝙧𝙞𝙤 ➺ ${Object.keys(global.db.data.users).length}* 
+┆🎠🎠🎠🎠🎠🎠🎠🎠🎠
+┆┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+┆ • • •「𝙅𝙪𝙚𝙜𝙤𝙨 𝙙𝙞𝙣𝙖́𝙢𝙞𝙘𝙤𝙨  」• • •
+┆┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+┆🎡➺ _${usedPrefix}mates | matemáticas | math_
+┆🎡➺ _${usedPrefix}ppt *piedra : papel : tijera*_
+┆🎡➺ _${usedPrefix}topgays_
+┆🎡➺ _${usedPrefix}topotakus_
+┆🎡➺ _${usedPrefix}gay | gay *@tag*_
+┆🎡➺ _${usedPrefix}gay2 *nombre : @tag*_
+┆🎡➺ _${usedPrefix}lesbiana *nombre : @tag*_
+┆🎡➺ _${usedPrefix}manca *nombre : @tag*_
+┆🎡➺ _${usedPrefix}manco *nombre : @tag*_
+┆🎡➺ _${usedPrefix}pajero *nombre : @tag*_
+┆🎡➺ _${usedPrefix}pajera *nombre : @tag*_
+┆🎡➺ _${usedPrefix}puto *nombre : @tag*_
+┆🎡➺ _${usedPrefix}puta *nombre : @tag*_
+┆🎡➺ _${usedPrefix}rata *nombre : @tag*_
+┆🎡➺ _${usedPrefix}love *nombre : @tag*_
+┆🎡➺ _${usedPrefix}doxear *nombre : @tag*_
+┆🎡➺ _${usedPrefix}doxxeame_
+┆🎡➺ _${usedPrefix}pregunta *texto*_
+┆🎡➺ _${usedPrefix}slot *apuesta*_
+┆🎡➺ _${usedPrefix}formarpareja_
+┆🎡➺ _${usedPrefix}dado_
+┆🎡➺ _${usedPrefix}verdad_
+┆🎡➺ _${usedPrefix}reto_
+┆🎡➺ _${usedPrefix}simi | okgoogle *texto*_
+┆🎡➺ _${usedPrefix}alexa | siri | cortana *texto*_
+┆🎡➺ _${usedPrefix}simsimi | bixby *texto*_
+┆🎡➺ _${usedPrefix}multijuegos_
+┆🎡➺ _${usedPrefix}juegos_
+╰───────────
+`.trim()
+await conn.sendButtonVid(m.chat, pp, menuA, menuB, lenguajeGB.smsBotonM1(), '.menu', lenguajeGB.smsBotonM2(), '/allmenu', lenguajeGB.smsBotonM3(), '#infobot', fkontak, adReply)
+
+} catch (e) {
+await conn.sendButton(m.chat, `\n${wm}`, lenguajeGB['smsMalError3']() + '#report ' + usedPrefix + command, null, [[lenguajeGB.smsMensError1(), `#reporte ${lenguajeGB['smsMensError2']()} *${usedPrefix + command}*`]], m)
+console.log(`❗❗ ${lenguajeGB['smsMensError2']()} ${usedPrefix + command} ❗❗`)
+console.log(e)	
+}}
 
 handler.help = ['infomenu'].map(v => v + 'able <option>')
 handler.tags = ['group', 'owner']

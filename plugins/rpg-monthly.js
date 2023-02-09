@@ -71,7 +71,8 @@ await conn.sendButton(m.chat, text, texto + `\n\n🎟️ 𝙿𝚛𝚎𝚖𝚒�
 user.lastmonthly = new Date * 1
 }
 handler.command = ['monthly', 'cadames', 'mes', 'mensual', 'entregadelmes'] 
-handler.level = 1
+handler.level = 6
+handler.register = true
 export default handler
 
 function pickRandom(list) {
