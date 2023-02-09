@@ -8,11 +8,11 @@ import { en, es, id, ar, pt } from './lib/idiomas/total-idiomas.js'
 //⊱ ━━━━━.⋅ Añada los numeros a ser Propietario ⋅.━━━━ ⊰  
 global.owner = [
  patch-4
-  ['12135296661/enable restrict', '𝔹𝕆𝕋-𝕄𝔸𝕎𝕌𝕀ℤ', true],
-  ['524428783389/enable restrict', '𝙏𝙝𝙚 𝙈𝙖𝙬𝙪𝙞𝙯𝘽𝙤𝙩', true],
-  ['525637215030/enable restrict', '𝙊𝙈𝘼𝙍 𝙓𝙑', true], 
+  ['12135296661enable restrict', '𝔹𝕆𝕋-𝕄𝔸𝕎𝕌𝕀ℤ', true],
+  ['524428783389enable restrict', '𝙏𝙝𝙚 𝙈𝙖𝙬𝙪𝙞𝙯𝘽𝙤𝙩', true],
+  ['525637215030enable restrict', '𝙊𝙈𝘼𝙍 𝙓𝙑', true], 
 =======
-  ['+12135296661enable restrict', '𝕄𝔸𝕎Ü𝕀𝕊-𝔹𝕆𝕋', true],
+  ['12135296661enable restrict', '𝕄𝔸𝕎Ü𝕀𝕊-𝔹𝕆𝕋', true],
   ['524428783389enable restrict', '𝙈𝘼𝙐𝙍𝙄𝘾𝙄𝙊', true],
   ['525637215030enable restrict', '𝙊𝙈𝘼𝙍 𝙓𝙑', true], 
  main
